@@ -1,0 +1,30 @@
+<?php
+//后台登录
+Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
+    //登录和退出不需要验证auth
+    Route::get('login','LoginController@showLoginForm')->name('admin.login');
+    Route::post('login','LoginController@login')->name('admin.login');
+    Route::post('logout','LoginController@logout')->name('admin.logout');
+    Route::group(['middleware'=>'auth.admin'],function(){
+        //welcome
+        Route::get('welcome','IndexController@welcome')->name('admin.welcome');
+        //后台框架
+        Route::get('/','IndexController@index')->name('admin.index');
+        Route::get('index','IndexController@index')->name('admin.index');
+        //咨询
+        Route::get('article_list','ArticleController@article_list')->name('admin.article_list');
+        Route::get('article_class','ArticleController@article_class')->name('admin.article_class');
+        Route::get('article_class_edit','ArticleController@article_class_edit')->name('admin.article_class_edit');
+        Route::get('article_add','ArticleController@article_add')->name('admin.article_add');
+        //广告管理
+        Route::get('advert_list','AdvertController@advert_list')->name('admin.advert_list');
+        Route::get('advert_show','AdvertController@advert_show')->name('admin.advert_show');
+        Route::get('advert_add','AdvertController@advert_add')->name('admin.advert_add');
+        //产品管理
+        Route::get('product_list','ProductController@product_list')->name('admin.product_list');
+        Route::get('product_brand','ProductController@product_brand')->name('admin.product_brand');
+        Route::get('product_add','ProductController@product_add')->name('admin.product_add');
+        Route::get('product_category','ProductController@product_category')->name('admin.product_category');
+        Route::get('product_category_add','ProductController@product_category_add')->name('admin.product_category_add');
+    });
+});
