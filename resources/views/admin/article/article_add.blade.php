@@ -1,7 +1,8 @@
 @extends('admin._meta')
 @section('common')
 <article class="page-container">
-	<form class="form form-horizontal" id="form-article-add">
+	<form class="form form-horizontal" id="form-article-add" enctype="multipart/form-data">
+	{{ csrf_field() }}
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>文章标题：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -11,7 +12,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="articlecolumn" class="select">
+				<select name="classid" class="select">
 			    @foreach($classify as $v)
 					<option value="{{$v->id}}">{{$v->name}}</option>
 				@endforeach	
@@ -21,13 +22,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">排序值：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="0" placeholder="" id="articlesort" name="articlesort">
+				<input type="text" class="input-text" value="255" placeholder="" id="articlesort" name="px">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<textarea name="remark" id="remark" cols="" rows="" class="textarea"  placeholder="说点什么...输入10-200个字符"></textarea>
+				<textarea name="remark" id="remark" cols="" rows="" class="textarea"  placeholder="说点什么..."></textarea>
 			</div>
 		</div>
 		<div class="row cl">
@@ -39,20 +40,20 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章作者：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="0" placeholder="" id="author" name="author">
+				<input type="text" class="input-text" value="admin" placeholder="" id="auther" name="auther">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章来源：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="0" placeholder="" id="sources" name="sources">
+				<input type="text" class="input-text" value="官方" placeholder="" id="sources" name="from">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">允许评论：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="check-box">
-					<input type="checkbox" name="allowcomments" value="">
+					<input type="checkbox" name="can_comment" value="1">
 					<label for="checkbox-pinglun">&nbsp;</label>
 				</div>
 			</div>
@@ -61,7 +62,7 @@
 			<label class="form-label col-xs-4 col-sm-2">置顶：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="check-box">
-					<input type="checkbox" name="stick" value="">
+					<input type="checkbox" name="stick" value="1">
 					<label for="checkbox-pinglun">&nbsp;</label>
 				</div>
 			</div>
@@ -69,22 +70,28 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<div class="uploader-thum-container">
-					<div id="fileList" class="uploader-list"></div>
-					<div id="filePicker">选择图片</div>
-					<button id="btn-star" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
-				</div>
+				 <div class="layui-upload">
+                    <button type="button" class="layui-btn" id="img_button"><i class="layui-icon">&#xe67c;</i>图片上传</button>
+                    <div class="layui-upload-list" >
+                        <ul id="layui-upload-box" class="layui-clear">
+                            <li><img id="img0" src="" /><p></p></li>
+                        </ul>
+                        <input type="file" style='display:none' name="cover" id="file0" value="">
+                    </div>
+                </div>
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> 
-				<script id="editor" type="text/plain" style="width:100%;height:400px;"></script> 
+				<div id="ueditor" name="content" class="edui-default">
+                    @include('UEditor::head')
+                </div>
 			</div>
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<button class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交审核</button>
 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
 				<button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
@@ -97,7 +104,42 @@
 <script type="text/javascript" src="{{URL::asset('lib/jquery.validation/1.14.0/jquery.validate.js')}}"></script> 
 <script type="text/javascript" src="{{URL::asset('lib/jquery.validation/1.14.0/validate-methods.js')}}"></script> 
 <script type="text/javascript" src="{{URL::asset('lib/jquery.validation/1.14.0/messages_zh.js')}}"></script>
+<script id="ueditor"></script>
 <script type="text/javascript">
+var ue=UE.getEditor("ueditor");
+ue.ready(function(){
+     //因为Laravel有防csrf防伪造攻击的处理所以加上此行
+     //ue.execCommand('serverparam','_token','{{ csrf_token() }}');
+     ue.setHeight(400);
+});
+$("#img_button").click(function(){
+	$("#file0").click();
+})
+$("#file0").change(function(){  
+      // getObjectURL是自定义的函数，见下面  
+      // this.files[0]代表的是选择的文件资源的第一个，因为上面写了 multiple="multiple" 就表示上传文件可能不止一个  
+      // ，但是这里只读取第一个   
+      var objUrl = getObjectURL(this.files[0]) ;  
+      // 这句代码没什么作用，删掉也可以  
+      // console.log("objUrl = "+objUrl) ;  
+      if (objUrl) {  
+        // 在这里修改图片的地址属性  
+        $("#img0").attr("src", objUrl) ; 
+      }  
+}) ;  
+//建立一個可存取到該file的url  
+function getObjectURL(file) {  
+  var url = null ;   
+  // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已  
+  if (window.createObjectURL!=undefined) { // basic  
+    url = window.createObjectURL(file) ;  
+  } else if (window.URL!=undefined) { // mozilla(firefox)  
+    url = window.URL.createObjectURL(file) ;  
+  } else if (window.webkitURL!=undefined) { // webkit or chrome  
+    url = window.webkitURL.createObjectURL(file) ;  
+  }  
+  return url ;  
+}  
 $(function(){
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',
@@ -110,9 +152,9 @@ $(function(){
 		rules:{
 			title:{
 				required:true,
-				rangelength:[1,50],
+				rangelength:[1,100],
 			},
-			articlecolumn:{
+			classid:{
 				required:true,
 			},
 			articletype:{
@@ -121,26 +163,54 @@ $(function(){
 			articlesort:{
 				required:true,
 			},
-			remark:{
+			auther:{
 				required:true,
-				rangelength:[10,200],
+				rangelength:[0,50],
 			},
-			author:{
+			from:{
 				required:true,
+				rangelength:[0,50],
 			},
 			sources:{
 				required:true,
 			},
 			browse:{
 				min:0,
+				max:100000000
 			},
+			px:{
+				min:0,
+				max:255
+			}
 
 		},
 		onkeyup:false,
 		focusCleanup:true,
 		success:"valid",
 		submitHandler:function(form){
-			//$(form).ajaxSubmit();
+            $(form).ajaxSubmit({
+                type: 'post', // 提交方式 get/post
+                url: '{{route('admin.article_create')}}', // 需要提交的 url
+                data: $('form').serializeArray(),
+                success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+                    // 此处可对 data 作相关处理
+                    if(data.code == 200){
+                    	layer.msg(data.msg,{icon: 1});
+                    	$(form).resetForm(); // 提交后重置表单
+                    }else{
+                    	layer.msg(data.msg,{icon: 2});
+                    }
+                    
+                },error:function(error){
+                	var json=JSON.parse(error.responseText);
+                    $.each(json.errors, function(idx, obj) {
+                        layer.msg(obj[0]);
+                        return false;
+                    });
+                }
+            });
+            return false; // 阻止表单自动提交事件，必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+			
 			var index = parent.layer.getFrameIndex(window.name);
 			//parent.$('.btn-refresh').click();
 			parent.layer.close(index);

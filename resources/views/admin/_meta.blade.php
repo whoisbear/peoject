@@ -20,6 +20,7 @@
 <link rel="stylesheet" type="text/css" href="{{URL::asset('lib/Hui-iconfont/1.0.8/iconfont.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{URL::asset('static/h-ui.admin/skin/default/skin.css')}}" id="skin" />
 <link rel="stylesheet" type="text/css" href="{{URL::asset('static/h-ui.admin/css/style.css')}}" />
+<link rel="stylesheet" href="{{URL::asset('static/layui/css/layui.css')}}" media="all">
 @section('css')
 @show
 <title>我的桌面</title>
@@ -34,8 +35,12 @@
 <![endif]-->
 <script type="text/javascript" src="{{URL::asset('lib/jquery/1.9.1/jquery.min.js')}}"></script> 
 <script type="text/javascript" src="{{URL::asset('static/h-ui/js/H-ui.min.js')}}"></script> 
-<script type="text/javascript" src="{{URL::asset('lib/layer/2.4/layer.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('static/layui/layui.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('static/h-ui.admin/js/H-ui.admin.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('lib/layer/2.4/layer.js')}}"></script>
+<script>
+$.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+</script>
 @section('js')
 
 @show

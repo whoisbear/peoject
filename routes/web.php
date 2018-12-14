@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//文件上传接口，前后台共用
+Route::post('uploadImg', 'PublicController@uploadImg')->name('uploadImg');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

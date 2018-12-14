@@ -16,6 +16,9 @@ Route::group(['namespace'=>'Admin','prefix'=>'admin'],function(){
         Route::get('article_class','ArticleController@article_class')->name('admin.article_class');
         Route::get('article_class_edit','ArticleController@article_class_edit')->name('admin.article_class_edit');
         Route::get('article_add','ArticleController@article_add')->name('admin.article_add');
+        Route::post('article_create','ArticleController@article_create')->name('admin.article_create');
+        Route::get('article_update/{id}','ArticleController@article_update')->name('admin.article_update');
+        Route::put('article_edit/{id}','ArticleController@article_edit')->name('admin.article_edit');
         //广告管理
         Route::get('advert_list','AdvertController@advert_list')->name('admin.advert_list');
         Route::get('advert_show','AdvertController@advert_show')->name('admin.advert_show');
