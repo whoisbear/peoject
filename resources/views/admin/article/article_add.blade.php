@@ -12,7 +12,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="classid" class="select">
+				<select id="classid" name="classid" class="select">
 			    @foreach($classify as $v)
 					<option value="{{$v->id}}">{{$v->name}}</option>
 				@endforeach	
@@ -22,7 +22,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">排序值：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="255" placeholder="" id="articlesort" name="px">
+				<input type="text" class="input-text" value="255" placeholder="" id="px" name="px">
 			</div>
 		</div>
 		<div class="row cl">
@@ -46,7 +46,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">文章来源：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="官方" placeholder="" id="sources" name="from">
+				<input type="text" class="input-text" value="官方" placeholder="" id="from" name="from">
 			</div>
 		</div>
 		<div class="row cl">
@@ -64,6 +64,19 @@
 				<div class="check-box">
 					<input type="checkbox" name="stick" value="1">
 					<label for="checkbox-pinglun">&nbsp;</label>
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">文章状态：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="state" type="radio" value="1" checked>
+					<label>已发布</label>
+				</div>
+				<div class="radio-box">
+					<input name="state" type="radio" value="0">
+					<label>下架</label>
 				</div>
 			</div>
 		</div>
@@ -157,12 +170,6 @@ $(function(){
 			classid:{
 				required:true,
 			},
-			articletype:{
-				required:true,
-			},
-			articlesort:{
-				required:true,
-			},
 			auther:{
 				required:true,
 				rangelength:[0,50],
@@ -171,9 +178,6 @@ $(function(){
 				required:true,
 				rangelength:[0,50],
 			},
-			sources:{
-				required:true,
-			},
 			browse:{
 				min:0,
 				max:100000000
@@ -181,7 +185,10 @@ $(function(){
 			px:{
 				min:0,
 				max:255
-			}
+			},
+			file0:{
+				required:true,
+			},
 
 		},
 		onkeyup:false,
@@ -196,7 +203,9 @@ $(function(){
                     // 此处可对 data 作相关处理
                     if(data.code == 200){
                     	layer.msg(data.msg,{icon: 1});
-                    	$(form).resetForm(); // 提交后重置表单
+                    	setTimeout(function(){
+                    		window.location.href = "{{route('admin.article_list')}}";
+                        },1500)
                     }else{
                     	layer.msg(data.msg,{icon: 2});
                     }

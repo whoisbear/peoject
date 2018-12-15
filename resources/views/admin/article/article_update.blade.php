@@ -70,6 +70,19 @@
 			</div>
 		</div>
 		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">文章状态：</label>
+			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
+				<div class="radio-box">
+					<input name="state" type="radio"  value="1" @if($article->state == 1) checked @endif >
+					<label>已发布</label>
+				</div>
+				<div class="radio-box">
+					<input name="state" type="radio"  value="0" @if($article->state == 0) checked @endif >
+					<label>下架</label>
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				 <div class="layui-upload">
@@ -197,6 +210,9 @@ $(function(){
                     // 此处可对 data 作相关处理
                     if(data.code == 200){
                     	layer.msg(data.msg,{icon: 1});
+                    	setTimeout(function(){
+                    		window.location.href = "{{route('admin.article_list')}}";
+                        },1500)
                     }else{
                     	layer.msg(data.msg,{icon: 2});
                     }
