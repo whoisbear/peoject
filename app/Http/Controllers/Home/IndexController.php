@@ -29,7 +29,7 @@ class IndexController extends Controller
         }else{
             $message = 'l love you 我爱你 socket';
             //转为GBK编码，处理乱码问题，这要看你的编码情况而定，每个人的编码都不同
-            $message = mb_convert_encoding($message,'GBK','UTF-8');
+            //$message = mb_convert_encoding($message,'GBK','UTF-8');
             //向服务端写入字符串信息
 
             if(socket_write($socket,$message,strlen($message)) == false){
@@ -46,70 +46,7 @@ class IndexController extends Controller
         socket_close($socket);//工作完毕，关闭套接流
         //return view('home.index.index');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function ceshi(){
+        return view('home.index.ceshi');
     }
 }

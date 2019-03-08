@@ -23,5 +23,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['namespace'=>'Home','prefix'=>'index'],function(){
     Route::get('/', 'IndexController@index')->name('index.index');
+    Route::get('ceshi', 'IndexController@ceshi')->name('index.ceshi');
 });
 
