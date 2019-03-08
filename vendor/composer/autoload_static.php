@@ -32,6 +32,7 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         ),
         'W' => 
         array (
+            'Workerman\\' => 10,
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
         ),
@@ -75,6 +76,7 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
+            'PHPSocketIO\\' => 12,
         ),
         'M' => 
         array (
@@ -113,6 +115,7 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         'C' => 
         array (
             'Cron\\' => 5,
+            'Channel\\' => 8,
         ),
         'A' => 
         array (
@@ -130,6 +133,10 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         'XdgBaseDir\\' => 
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
+        ),
+        'Workerman\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/workerman',
         ),
         'Whoops\\' => 
         array (
@@ -243,6 +250,10 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PHPSocketIO\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/phpsocket.io/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -299,6 +310,10 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Channel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/channel/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -353,6 +368,7 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Home\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Home/IndexController.php',
         'App\\Http\\Controllers\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AuthAdmin' => __DIR__ . '/../..' . '/app/Http/Middleware/AuthAdmin.php',
@@ -380,6 +396,8 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Channel\\Client' => __DIR__ . '/..' . '/workerman/channel/src/Client.php',
+        'Channel\\Server' => __DIR__ . '/..' . '/workerman/channel/src/Server.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/DayOfMonthField.php',
@@ -1993,6 +2011,30 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         'Monolog\\ResettableInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ResettableInterface.php',
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'PHPSocketIO\\ChannelAdapter' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/ChannelAdapter.php',
+        'PHPSocketIO\\Client' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Client.php',
+        'PHPSocketIO\\Debug' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Debug.php',
+        'PHPSocketIO\\DefaultAdapter' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/DefaultAdapter.php',
+        'PHPSocketIO\\Engine\\Engine' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Engine.php',
+        'PHPSocketIO\\Engine\\Parser' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Parser.php',
+        'PHPSocketIO\\Engine\\Protocols\\Http\\Request' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Protocols/Http/Request.php',
+        'PHPSocketIO\\Engine\\Protocols\\Http\\Response' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Protocols/Http/Response.php',
+        'PHPSocketIO\\Engine\\Protocols\\SocketIO' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Protocols/SocketIO.php',
+        'PHPSocketIO\\Engine\\Protocols\\WebSocket' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Protocols/WebSocket.php',
+        'PHPSocketIO\\Engine\\Protocols\\WebSocket\\RFC6455' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Protocols/WebSocket/RFC6455.php',
+        'PHPSocketIO\\Engine\\Socket' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Socket.php',
+        'PHPSocketIO\\Engine\\Transport' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Transport.php',
+        'PHPSocketIO\\Engine\\Transports\\Polling' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Transports/Polling.php',
+        'PHPSocketIO\\Engine\\Transports\\PollingJsonp' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Transports/PollingJsonp.php',
+        'PHPSocketIO\\Engine\\Transports\\PollingXHR' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Transports/PollingXHR.php',
+        'PHPSocketIO\\Engine\\Transports\\WebSocket' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Engine/Transports/WebSocket.php',
+        'PHPSocketIO\\Event\\Emitter' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Event/Emitter.php',
+        'PHPSocketIO\\Nsp' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Nsp.php',
+        'PHPSocketIO\\Parser\\Decoder' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Parser/Decoder.php',
+        'PHPSocketIO\\Parser\\Encoder' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Parser/Encoder.php',
+        'PHPSocketIO\\Parser\\Parser' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Parser/Parser.php',
+        'PHPSocketIO\\Socket' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/Socket.php',
+        'PHPSocketIO\\SocketIO' => __DIR__ . '/..' . '/workerman/phpsocket.io/src/SocketIO.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
@@ -3699,6 +3741,32 @@ class ComposerStaticInitf0598cee7183dc8667180346f21027c7
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Workerman\\Autoloader' => __DIR__ . '/..' . '/workerman/workerman/Autoloader.php',
+        'Workerman\\Connection\\AsyncTcpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/AsyncTcpConnection.php',
+        'Workerman\\Connection\\AsyncUdpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/AsyncUdpConnection.php',
+        'Workerman\\Connection\\ConnectionInterface' => __DIR__ . '/..' . '/workerman/workerman/Connection/ConnectionInterface.php',
+        'Workerman\\Connection\\TcpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/TcpConnection.php',
+        'Workerman\\Connection\\UdpConnection' => __DIR__ . '/..' . '/workerman/workerman/Connection/UdpConnection.php',
+        'Workerman\\Events\\Ev' => __DIR__ . '/..' . '/workerman/workerman/Events/Ev.php',
+        'Workerman\\Events\\Event' => __DIR__ . '/..' . '/workerman/workerman/Events/Event.php',
+        'Workerman\\Events\\EventInterface' => __DIR__ . '/..' . '/workerman/workerman/Events/EventInterface.php',
+        'Workerman\\Events\\Libevent' => __DIR__ . '/..' . '/workerman/workerman/Events/Libevent.php',
+        'Workerman\\Events\\React\\Base' => __DIR__ . '/..' . '/workerman/workerman/Events/React/Base.php',
+        'Workerman\\Events\\React\\ExtEventLoop' => __DIR__ . '/..' . '/workerman/workerman/Events/React/ExtEventLoop.php',
+        'Workerman\\Events\\React\\ExtLibEventLoop' => __DIR__ . '/..' . '/workerman/workerman/Events/React/ExtLibEventLoop.php',
+        'Workerman\\Events\\React\\StreamSelectLoop' => __DIR__ . '/..' . '/workerman/workerman/Events/React/StreamSelectLoop.php',
+        'Workerman\\Events\\Select' => __DIR__ . '/..' . '/workerman/workerman/Events/Select.php',
+        'Workerman\\Events\\Swoole' => __DIR__ . '/..' . '/workerman/workerman/Events/Swoole.php',
+        'Workerman\\Lib\\Timer' => __DIR__ . '/..' . '/workerman/workerman/Lib/Timer.php',
+        'Workerman\\Protocols\\Frame' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Frame.php',
+        'Workerman\\Protocols\\Http' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Http.php',
+        'Workerman\\Protocols\\HttpCache' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Http.php',
+        'Workerman\\Protocols\\ProtocolInterface' => __DIR__ . '/..' . '/workerman/workerman/Protocols/ProtocolInterface.php',
+        'Workerman\\Protocols\\Text' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Text.php',
+        'Workerman\\Protocols\\Websocket' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Websocket.php',
+        'Workerman\\Protocols\\Ws' => __DIR__ . '/..' . '/workerman/workerman/Protocols/Ws.php',
+        'Workerman\\WebServer' => __DIR__ . '/..' . '/workerman/workerman/WebServer.php',
+        'Workerman\\Worker' => __DIR__ . '/..' . '/workerman/workerman/Worker.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',

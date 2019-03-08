@@ -10,7 +10,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "spatie/laravel-permission": "^2.28",
-        "stevenyangecho/laravel-u-editor": "~1.4"
+        "stevenyangecho/laravel-u-editor": "~1.4",
+        "workerman/phpsocket.io": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -28,8 +28,7 @@ do{
         $string = socket_read($accept_resource,1024);
         /*socket_read的作用就是读出socket_accept()的资源并把它转化为字符串*/
 
-        //echo 'server receive is :'.$string.PHP_EOL;//PHP_EOL为php的换行预定义常量
-        echo "<script>alert(123)</script>";
+        echo 'server receive is :'.$string.PHP_EOL;//PHP_EOL为php的换行预定义常量
         if($string != false){
             $return_client = 'server receive is : '.$string.PHP_EOL;
             /*向socket_accept的套接流写入信息，也就是回馈信息给socket_bind()所绑定的主机客户端*/
